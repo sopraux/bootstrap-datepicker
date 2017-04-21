@@ -1203,7 +1203,7 @@
 
 				if (findOuter.length)
 			        target = findOuter;
-				
+
 				// Clicked on a day
 				if (target.hasClass('day')){
 					day = Number(target.text());
