@@ -1,3 +1,9 @@
+# bootstrap-datepicker-extended
+
+This is a fork of twitter's [bootstrap datepicker](https://github.com/uxsolutions/bootstrap-datepicker) in order to improve and develop custom features for Sopra Steria Digital Service Center needs.
+
+[![Build Status](https://travis-ci.org/sopraux/bootstrap-datepicker-extended.svg?branch=master)](https://travis-ci.org/sopraux/bootstrap-datepicker-extended)
+
 # bootstrap-datepicker
 
 [![Join the chat at https://gitter.im/uxsolutions/bootstrap-datepicker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/uxsolutions/bootstrap-datepicker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
