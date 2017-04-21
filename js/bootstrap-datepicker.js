@@ -417,9 +417,6 @@
 				[this.picker, '.prev, .next', {
 					click: $.proxy(this.navArrowsClick, this)
 				}],
-				[this.picker, '.day:not(.disabled)', {
-					click: $.proxy(this.dayCellClick, this)
-				}],
 				[$(window), {
 					resize: $.proxy(this.place, this)
 				}],
@@ -791,7 +788,7 @@
 			}, this), true);
 			this.dates.replace(dates);
 
-			if (this.o.updateViewDate) {
+			if (!this.o.updateViewDate) {
 				if (this.dates.length)
 					this.viewDate = new Date(this.dates.get(-1));
 				else if (this.viewDate < this.o.startDate)
@@ -1043,7 +1040,7 @@
 					if (before.tooltip)
 						tooltip = before.tooltip;
 					if (before.content)
-						content = before.content;
+					    content = before.content;
 				}
 
 				//Check if uniqueSort exists (supported by jquery >=1.12 and >=2.2)
@@ -1054,7 +1051,7 @@
 					clsName = $.unique(clsName);
 				}
 
-				html.push('<td class="'+clsName.join(' ')+'"' + (tooltip ? ' title="'+tooltip+'"' : '') + ' data-date="' + prevMonth.getTime().toString() + '">' + content + '</td>');
+				html.push('<td class="'+clsName.join(' ')+'"' + (tooltip ? ' title="'+tooltip+'"' : '') + (this.o.dateCells ? ' data-date="'+(prevMonth.getTime().toString())+'"' : '') + '>' + content + '</td>');
 				tooltip = null;
 				if (weekDay === this.o.weekEnd){
 					html.push('</tr>');
@@ -1201,6 +1198,34 @@
 			}
 
 			if (!target.hasClass('disabled')){
+				// Allow clicking on elements inside a day
+				var findOuter = target.closest('.day');
+
+				if (findOuter.length)
+			        target = findOuter;
+				
+				// Clicked on a day
+				if (target.hasClass('day')){
+					day = Number(target.text());
+					year = this.viewDate.getUTCFullYear();
+					month = this.viewDate.getUTCMonth();
+
+					if (target.hasClass('old') || target.hasClass('new')){
+						dir = target.hasClass('old') ? -1 : 1;
+						month = (month + dir + 12) % 12;
+						if ((dir === -1 && month === 11) || (dir === 1 && month === 0)) {
+							year += dir;
+							if (this.o.updateViewDate) {
+								this._trigger('changeYear', this.viewDate);
+							}
+						}
+						if (this.o.updateViewDate) {
+							this._trigger('changeMonth', this.viewDate);
+						}
+					}
+					this._setDate(UTCDate(year, month, day));
+				}
+
 				// Clicked on a month, year, decade, century
 				if (target.hasClass('month')
 						|| target.hasClass('year')
@@ -1236,27 +1261,10 @@
 			delete this._focused_from;
 		},
 
-		dayCellClick: function(e){
-			var $target = $(e.currentTarget);
-			var timestamp = $target.data('date');
-			var date = new Date(timestamp);
-
-			if (this.o.updateViewDate) {
-				if (date.getUTCFullYear() !== this.viewDate.getUTCFullYear()) {
-					this._trigger('changeYear', this.viewDate);
-				}
-
-				if (date.getUTCMonth() !== this.viewDate.getUTCMonth()) {
-					this._trigger('changeMonth', this.viewDate);
-				}
-			}
-			this._setDate(date);
-		},
-
 		// Clicked on prev or next
 		navArrowsClick: function(e){
-			var $target = $(e.currentTarget);
-			var dir = $target.hasClass('prev') ? -1 : 1;
+			var target = $(e.currentTarget);
+			var dir = target.hasClass('prev') ? -1 : 1;
 			if (this.viewMode !== 0){
 				dir *= DPGlobal.viewModes[this.viewMode].navStep * 12;
 			}
@@ -1715,6 +1723,7 @@
 		zIndexOffset: 10,
 		container: 'body',
 		immediateUpdates: false,
+		dateCells:false,
 		title: '',
 		templates: {
 			leftArrow: '&#x00AB;',
@@ -1945,9 +1954,9 @@
 			                '<th colspan="7" class="datepicker-title"></th>'+
 			              '</tr>'+
 							'<tr>'+
-								'<th class="prev">'+defaults.templates.leftArrow+'</th>'+
+								'<th class="prev">&laquo;</th>'+
 								'<th colspan="5" class="datepicker-switch"></th>'+
-								'<th class="next">'+defaults.templates.rightArrow+'</th>'+
+								'<th class="next">&raquo;</th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
@@ -2011,7 +2020,7 @@
 
 	/* DATEPICKER VERSION
 	 * =================== */
-	$.fn.datepicker.version = '1.7.0-RC2';
+	$.fn.datepicker.version = '1.7.0-RC1';
 
 	$.fn.datepicker.deprecated = function(msg){
 		var console = window.console;
