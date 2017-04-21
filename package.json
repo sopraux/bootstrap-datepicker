@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-datepicker-extended",
   "description": "A datepicker for Bootstrap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "keywords": [
     "datepicker",
@@ -15,7 +15,7 @@
     "less/*.less",
     "LICENSE"
   ],
-  "homepage": "https://github.com/uxsolutions/bootstrap-datepicker",
+  "homepage": "https://github.com/sopraux/bootstrap-datepicker-extended",
   "authors": [
     "Andrew Rowls <eternicode@gmail.com>",
     "Ferran Martínez <ferranmrg@gmail.com>",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uxsolutions/bootstrap-datepicker.git"
+    "url": "https://github.com/sopraux/bootstrap-datepicker-extended.git"
   },
   "peerDependencies": {
     "jquery": ">=1.7.1 <4.0.0"

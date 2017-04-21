@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.1
+-----
+Bugfixes
+ * Fix linter and disabled some old tests
+
 0.1.0
 -----
 Fork form bootstrap-datepicker
