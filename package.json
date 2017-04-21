@@ -1,7 +1,7 @@
 {
-  "name": "bootstrap-datepicker",
+  "name": "bootstrap-datepicker-extended",
   "description": "A datepicker for Bootstrap",
-  "version": "1.7.0-RC2",
+  "version": "0.1.0",
   "license": "Apache-2.0",
   "keywords": [
     "datepicker",
@@ -16,7 +16,11 @@
     "LICENSE"
   ],
   "homepage": "https://github.com/uxsolutions/bootstrap-datepicker",
-  "author": "Andrew Rowls <eternicode@gmail.com>",
+  "authors": [
+    "Andrew Rowls <eternicode@gmail.com>",
+    "Ferran Martínez <ferranmrg@gmail.com>",
+    "Sopra Steria Digital SC <digital@sopra.com>"
+  ],
   "scripts": {
     "test": "grunt test"
   },

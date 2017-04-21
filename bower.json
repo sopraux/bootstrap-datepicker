@@ -1,5 +1,5 @@
 {
-  "name": "bootstrap-datepicker",
+  "name": "bootstrap-datepicker-extended",
   "main": [
     "dist/css/bootstrap-datepicker3.css",
     "dist/js/bootstrap-datepicker.js"

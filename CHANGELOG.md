@@ -1,6 +1,19 @@
 Changelog
 =========
 
+0.1.0
+-----
+Fork form bootstrap-datepicker
+
+Bugfixes
+ * Fix updateViewDate to show the correct header datepicker
+ * Fix trigger changeDate
+
+Features
+ * Allow clicking on elements inside a day
+ * Add editable content in a day
+
+
 1.5.1
 -----
 
@@ -12,17 +25,17 @@ Bugfixes
  * Use document scrollTop instead of body scrollTop when using the body container
  * Fix focus for disabled week days (Fixes: #1365, #1187, #1648)
  * Fixes enableOnReadOnly bug when datepicker is of type component
- 
+
 Translations
  * Added missing translations for slovak translation. (Fixes: #1521)
  * Added missing date format for norwegian (nb) locale (Fixes #1690)
  * Armenian translation short names
  * adding Today translation, default date format for the lithuanian translation
- 
+
 Docs
  * Document data-api on container
  * Added docs for the different stylesheet files. (Fixes #1459)
- 
+
 Repository
  * Enable travis container builds for faster builds
 
@@ -50,7 +63,7 @@ Features
 Bugfixes:
  * Scrolling on mobile device closes datepicker
  * Use $.on() instead $.bind()
- * Fixed right-click and edit-menu paste 
+ * Fixed right-click and edit-menu paste
  * Ported prototype fix for Prototype Compability
  * Fixed issue with startview year
  * Fixed padding inconsistency with twitter bootstrap 3
@@ -59,10 +72,10 @@ Bugfixes:
  * Fixes the issue with a date change firing mulitple change events
  * removed hard dependency on bootstrap (because of twbs-sass package)
  * Clearing the date should reset to defaultViewDate
- * Datepicker orientation mix up - top = bottom and bottom = top 
+ * Datepicker orientation mix up - top = bottom and bottom = top
  * Fix cursor thead styles
  * Fix date-reset issue when navigating to next with invalid date
- * Using orientation:auto but date picker still appears above, cut off, when there plenty of space below. 
+ * Using orientation:auto but date picker still appears above, cut off, when there plenty of space below.
  * lots of orientation fixes
 
 Locale changes:
@@ -144,16 +157,16 @@ Repo changes:
 * Add package name and version to npm package.json
 
 Bugfixes:
-* Remove font-family declaration for datepicker 
+* Remove font-family declaration for datepicker
 * Don't deselect date unless datepicker is multidate
 * Removed comment from compiled CSS.
 * Don't clear input after typing date and hitting Enter when keyboard nav is disabled
-* Fixing the ui displaying 'undefined nan' when typing dates in Firefox & IE 
-* Reset tooltip to a default empty value 
-* Fix colspan if calendarWeeks & clearBtn are true 
+* Fixing the ui displaying 'undefined nan' when typing dates in Firefox & IE
+* Reset tooltip to a default empty value
+* Fix colspan if calendarWeeks & clearBtn are true
 * Removed fixed width and height in large and small group addon
 * z-index calculation should not stop at first element
-* Fix IE8 bug with Array#splice with one argument 
+* Fix IE8 bug with Array#splice with one argument
 
 Documentation:
 * ghpages: jQuery js not being loaded when using HTTPS
@@ -175,7 +188,7 @@ Updated languages:
 * Fixed Albanian translation typo's
 * Add missing clear and format localization value for Russian translation
 * Updated Serbian translation
-* Fixed Ukrainian iso code to uk instead of ua 
+* Fixed Ukrainian iso code to uk instead of ua
 * Updated greek translation
 * Update Catalan and Spanish localizations
 * Added missing armenian translations
@@ -268,11 +281,11 @@ Locale changes:
 
 1.1.3
  ----------
- 
+
  Clicking the clear button now triggers the input's `change` and datepicker's `changeDate` events.
  Fixed a bug that broke the event-attached `format` function.
- 
- 
+
+
 1.1.2
 ----------
 
